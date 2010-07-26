@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   messages.
   EOF
 
-  s.files = FileList.new(
+  s.files = Dir[
     'test/**/*',
     'guide/**/*',
     'lib/**/*',
@@ -19,15 +19,11 @@ Gem::Specification.new do |s|
     'THANKS',
     'TODO',
     'Rakefile',
-    'version').to_a
+    'version']
 
   s.required_ruby_version = Gem::Version::Requirement.new(">= 1.8.1")
 
-  s.has_rdoc = true
-  s.extra_rdoc_files = rdoc.rdoc_files.reject { |fn| fn =~ /\.rb$/ }.to_a
-  s.rdoc_options.concat([ '--title', rdoc.title, '--main', rdoc.main, rdoc.options ].flatten)
-
-  s.test_files = FileList['test/tc_*.rb'].to_a
+  s.test_files = Dir['test/tc_*.rb']
 
   s.author = "Matt Armstrong"
   s.email = "matt@rfc20.org"
